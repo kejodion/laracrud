@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -11,15 +12,15 @@ class CreateLaracrudColumns extends Migration
     {
         // add columns to users table
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default(config('laracrud.roles.0'));
-            $table->string('timezone')->default(config('app.timezone'));
+            $table->string('role');
         });
 
         // create default admin user
         User::create([
             'name' => 'Admin',
             'email' => 'admin@example.com',
-            'password' => bcrypt('admin123'),
+            'password' => Hash::make('admin123'),
+            'role' => 'Admin',
         ]);
     }
 
@@ -28,7 +29,6 @@ class CreateLaracrudColumns extends Migration
         // remove columns from users table
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('role');
-            $table->dropColumn('timezone');
         });
 
         // delete default admin user
