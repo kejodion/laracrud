@@ -1,0 +1,3 @@
+<?php
+
+Route::redirect('/', 'login');

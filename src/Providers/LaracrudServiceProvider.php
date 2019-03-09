@@ -13,13 +13,13 @@ class LaracrudServiceProvider extends ServiceProvider
     public function boot()
     {
         // install files
-        $this->publishes([__DIR__ . '/../../resources/stubs/app/user.stub' => app_path('User.php')], 'install');
+        $this->publishes([__DIR__ . '/../../resources/stubs/user.stub' => app_path('User.php')], 'install');
         $this->publishes([__DIR__ . '/../../config/laracrud.php' => config_path('laracrud.php')], 'install');
-        $this->publishes([__DIR__ . '/../../resources/stubs/public/css/app.stub' => public_path('css/app.css')], 'install');
-        $this->publishes([__DIR__ . '/../../resources/stubs/public/js/app.stub' => public_path('js/app.js')], 'install');
+        $this->publishes([__DIR__ . '/../../resources/stubs/public/css.stub' => public_path('css/app.css')], 'install');
+        $this->publishes([__DIR__ . '/../../resources/stubs/public/js.stub' => public_path('js/app.js')], 'install');
         $this->publishes([__DIR__ . '/../../public' => public_path('laracrud')], 'install');
         $this->publishes([__DIR__ . '/../../resources/views/layouts' => resource_path('views/vendor/laracrud/layouts')], 'install');
-        $this->publishes([__DIR__ . '/../../resources/stubs/routes/web.stub' => base_path('routes/web.php')], 'install');
+        $this->publishes([__DIR__ . '/../../resources/stubs/routes.stub' => base_path('routes/web.php')], 'install');
 
         // publish config
         $this->publishes([__DIR__ . '/../../config/laracrud.php' => config_path('laracrud.php')], 'config');
