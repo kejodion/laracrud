@@ -1,6 +1,6 @@
 {
   "name": "kjjdion/laracrud",
-  "description": "Laravel admin CRUD scaffolding.",
+  "description": "A simple Laravel admin CRUD package.",
   "homepage": "https://github.com/kjjdion/laracrud",
   "license": "MIT",
   "authors": [
