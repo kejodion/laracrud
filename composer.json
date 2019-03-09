@@ -1,0 +1,30 @@
+{
+  "name": "kjjdion/laracrud",
+  "description": "Laravel admin CRUD scaffolding.",
+  "homepage": "https://github.com/kjjdion/laracrud",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Kevin Dion",
+      "email": "kjjdion@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "laravel/framework": "5.8.*",
+    "yajra/laravel-datatables-html": "^4.0",
+    "yajra/laravel-datatables-oracle": "~9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kjjdion\\Laracrud\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Kjjdion\\Laracrud\\Providers\\LaracrudServiceProvider"
+      ]
+    }
+  }
+}
