@@ -103,7 +103,7 @@ You can use the CRUD command to create the controller, model, migrations, navbar
 
 To generate new resources, run: `php artisan make:crud "Role Name" "Model Name"`
 
-The role name will be used for the controller namespace, view, & route paths. **If it contains multiple words, make sure you use quotation marks and spaces. Same goes for the model name.**
+The role name will be used for the controller namespace, view, & route paths. **If a role or model name contains multiple words, make sure you use quotation marks and spaces. Also, make sure you use the singular form, and not the plural.**
 
 For example, let's say I want Admin's to have access to a new `Car` resource. I'd run `php artisan make:crud Admin Car`. Now my Admin's have access to this new resource.
 
