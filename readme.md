@@ -65,11 +65,11 @@ If you want to modify the default package controllers, simply create your own co
 
 ### Modifying Layouts
 
-All of the layout files used by the package are located in `resources/views/vendor/laracrud/layouts/*`. You can make any changes you want in these files.
+All of the layout files used by the package are located in `resources/views/vendor/laracrud/layouts/*`. You can make any changes you want in these files. Note that any time you generate CRUD a new nav link will be inserted in the `nav` layout file automatically.
 
 ## User Roles Concept
 
-Available user roles can be modified in `config/laracrud.php`. Any time you generated CRUD for a new role you should add said role to the `roles` array.
+Available user roles can be modified in `config/laracrud.php`. Any time you generate CRUD for a new role you should add said role to the `roles` array.
 
 The concept is simple, each role has it's own controllers, views, & routes in order to separate the concerns/permissions of each role.
 
