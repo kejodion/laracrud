@@ -6,8 +6,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('login', config('laracrud.controllers.auth.login') . '@loginPage')->name('login');
     Route::post('login', config('laracrud.controllers.auth.login') . '@login');
     Route::post('logout', config('laracrud.controllers.auth.login') . '@logout')->name('logout');
-    Route::get('profile', config('laracrud.controllers.auth.profile') . '@profileModal')->name('profile');
-    Route::patch('profile', config('laracrud.controllers.auth.profile') . '@profile');
+    Route::get('profile', config('laracrud.controllers.auth.profile') . '@updateModal')->name('profile');
+    Route::patch('profile', config('laracrud.controllers.auth.profile') . '@update');
     Route::get('password', config('laracrud.controllers.auth.profile') . '@passwordModal')->name('password');
     Route::patch('password', config('laracrud.controllers.auth.profile') . '@password');
 

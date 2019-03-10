@@ -1,5 +1,13 @@
 $(document).ready(function () {
 
+    // flash alert if it exists in session storage
+    if (sessionStorage.hasOwnProperty('flash_after')) {
+        let flash_after = JSON.parse(sessionStorage.getItem('flash_after'));
+
+        flash(flash_after[0], flash_after[1]);
+        sessionStorage.removeItem('flash_after');
+    }
+
     // ajax form logic
     $(document).on('submit', '[data-ajax-form]', function (event) {
         event.preventDefault();
@@ -22,14 +30,24 @@ $(document).ready(function () {
                 processData: false,
                 data: new FormData(form[0]),
                 success: function (response) {
+                    // dismiss modal
+                    if (response.hasOwnProperty('dismiss_modal')) {
+                        form.closest('[data-ajax-modal]').modal('toggle');
+                    }
+
+                    // flash alert message now
+                    if (response.hasOwnProperty('flash_now')) {
+                        flash(response.flash_now[0], response.flash_now[1]);
+                    }
+
+                    // flash alert message after
+                    if (response.hasOwnProperty('flash_after')) {
+                        sessionStorage.setItem('flash_after', JSON.stringify(response.flash_after));
+                    }
+
                     // redirect to page
                     if (response.hasOwnProperty('redirect')) {
                         $(location).attr('href', response.redirect);
-                    }
-
-                    // reload current page
-                    if (response.hasOwnProperty('reload_page')) {
-                        location.reload();
                     }
 
                     // reload datatables on page
@@ -37,9 +55,9 @@ $(document).ready(function () {
                         $($.fn.dataTable.tables()).DataTable().ajax.reload(null, false);
                     }
 
-                    // flash alert message
-                    if (response.hasOwnProperty('flash')) {
-                        flash(response.flash[0], response.flash[1]);
+                    // reload current page
+                    if (response.hasOwnProperty('reload_page')) {
+                        location.reload();
                     }
                 },
                 error: function (response) {
@@ -73,6 +91,25 @@ $(document).ready(function () {
         container.find('input, select, textarea').removeClass('is-invalid');
         container.removeClass('is-invalid-container');
         container.find('.invalid-feedback').remove();
+    });
+
+    // show ajax modal with content
+    $(document).on('click', '[data-modal]', function () {
+        $.get($(this).data('modal'), function (data) {
+            $(data).modal('show');
+        });
+    });
+
+    // execute scripts in ajax modals
+    $(document).on('shown.bs.modal', '.modal-ajax', function () {
+        $(this).find('script').each(function(){
+            eval($(this).text());
+        });
+    });
+
+    // remove ajax modal when hidden
+    $(document).on('hidden.bs.modal', '[data-ajax-modal]', function () {
+        $(this).remove();
     });
 
     // confirm action

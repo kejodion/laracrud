@@ -1,10 +1,10 @@
 @extends('laracrud::layouts.app')
 
 @section('parent-content')
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a href="{{ url('/') }}" class="navbar-brand">
-                <i class="fal {{ config('laracrud.icon') }}"></i> {{ config('app.name') }}
+                <i class="fal {{ config('laracrud.icon') }} text-primary"></i> {{ config('app.name') }}
             </a>
             <button class="navbar-toggler p-0 border-0" type="button" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -17,8 +17,8 @@
                             {{ auth()->user()->name }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="{{ route('profile') }}" class="dropdown-item{{ request()->is('profile') ? ' active' : '' }}">Profile</a>
-                            <a href="{{ route('password') }}" class="dropdown-item{{ request()->is('password') ? ' active' : '' }}">Password</a>
+                            <button type="button" class="dropdown-item" data-modal="{{ route('profile') }}">Profile</button>
+                            <button type="button" class="dropdown-item" data-modal="{{ route('password') }}">Password</button>
                             <form method="POST" action="{{ route('logout') }}" data-ajax-form>
                                 @csrf
                                 <button type="submit" class="dropdown-item">Logout</button>
@@ -30,7 +30,7 @@
         </div>
     </nav>
 
-    <div class="container my-4">
+    <div class="container mt-3 mb-5">
         @yield('child-content')
     </div>
 @endsection
