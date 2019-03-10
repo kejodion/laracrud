@@ -16,7 +16,7 @@ Route::group(['middleware' => 'web'], function () {
 
     // admin users
     Route::get('admin/users', config('laracrud.controllers.admin.user') . '@index')->name('admin.users');
-    Route::post('admin/users/datatables', config('laracrud.controllers.admin.user') . '@datatables')->name('admin.users.datatables');
+    Route::get('admin/users/datatables', config('laracrud.controllers.admin.user') . '@datatables')->name('admin.users.datatables');
     Route::get('admin/users/create', config('laracrud.controllers.admin.user') . '@createModal')->name('admin.users.create');
     Route::post('admin/users/create', config('laracrud.controllers.admin.user') . '@create');
     Route::get('admin/users/update/{user}', config('laracrud.controllers.admin.user') . '@updateModal')->name('admin.users.update');

@@ -35,3 +35,18 @@ body {
     z-index: 9999;
     pointer-events: none;
 }
+
+/* datatables style tweaks */
+.dataTables_wrapper table {
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+    width: calc(100% + 2.5rem);
+}
+.dataTables_wrapper th, .dataTables_wrapper td {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    vertical-align: middle;
+}
+.dataTables_wrapper tbody tr:hover {
+    background-color: #E9ECEF;
+}

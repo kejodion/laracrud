@@ -1,3 +1,3 @@
-<li class="nav-item{!! request()->is('admin') ? ' class="active"' : '' !!}">
-    <a href="{{ route('admin') }}" class="nav-link">Home</a>
+<li class="nav-item{!! request()->is('admin/users') ? ' class="active"' : '' !!}">
+    <a href="{{ route('admin.users') }}" class="nav-link">Users</a>
 </li>

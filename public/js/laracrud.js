@@ -1,3 +1,28 @@
+// datatables settings
+$.extend(true, $.fn.dataTable.defaults, {
+    autoWidth: false,
+    lengthMenu: [5, 10, 25, 50, 100, 250, 500],
+    pageLength: 25,
+    responsive: true,
+    stateDuration: 0,
+    stateSave: true,
+    stateLoadCallback: function (settings, callback) {
+        return JSON.parse(localStorage.getItem($(this).attr('id')));
+    },
+    stateSaveCallback: function (settings, data) {
+        localStorage.setItem($(this).attr('id'), JSON.stringify(data));
+    },
+    drawCallback: function (settings) {
+        let api = this.api();
+
+        // fix pagination if saved page is empty
+        if (api.page() > 0 && api.rows({page: 'current'}).count() === 0) {
+            api.page('previous').state.save();
+            location.reload();
+        }
+    }
+});
+
 $(document).ready(function () {
 
     // flash alert if it exists in session storage

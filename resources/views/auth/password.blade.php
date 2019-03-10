@@ -8,7 +8,7 @@
 
         <div class="modal-body">
             <div class="form-group">
-                <label for="current_password">Current password</label>
+                <label for="current_password">Current Password</label>
                 <input type="password" name="current_password" id="current_password" class="form-control" value="{{ old('current_password') }}">
             </div>
 
