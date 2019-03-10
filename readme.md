@@ -1,6 +1,6 @@
 ## Laracrud
 
-A simple admin CRUD package for Laravel 5.8.
+A simple CRUD package for Laravel 5.8.
 
 **Screenshots:** https://imgur.com/a/rAWwEvu
 
@@ -17,13 +17,13 @@ A simple admin CRUD package for Laravel 5.8.
 - Fully responsive (Bootstrap 4)
 - & more
 
-### Installation
+## Installation
 
 This package works best with a clean Laravel install, but can be used with an existing one as well.
 
-1. Configure your `.env` file with your app name, URL, database, etc.
-2. Set your app timezone in `config/app.php` (recommended but not required).
-3. Require Laracrud via composer: `composer require kjjdion/laracrud`
+1. Require via composer: `composer require kjjdion/laracrud`
+2. Configure your `.env` file with your app name, URL, database, etc.
+3. Set your app timezone in `config/app.php` (recommended but not required).
 
 ### Configuration
 
@@ -38,27 +38,31 @@ If you are installing on an existing Laravel 5.8 app, do not use the `--force`:
 If you [didn't](https://www.youtube.com/watch?v=WWaLxFIVX1s) use the `--force`, you will also have to make the following modifications:
 
 1. Add the `ColumnFillable` trait to your `User` model.
-2. Empty the contents of `css/app.css` and `js/app.js` to avoid conflicts.
-2. Redirect the default `/` route to login: `Route::redirect('/', 'login')`
+2. Empty the contents of `public/css/app.css` and `public/js/app.js` to avoid conflicts.
+2. Redirect the default `/` route to `login` in `routes/web.php`: `Route::redirect('/', 'login')`
 3. Remove the default laravel auth routes if they exist.
 
-**Tip:** you can change the default Fontawesome logo icon class in the `laracrud.php` config file.
+**Tip:** you can change the default Fontawesome logo icon class in `config/laracrud.php`.
 
 ### Migration
 
-Once you are done installation & configuration, run the migrations: `php artisan migrate`
+Once you are done installation & configuration, run: `php artisan migrate`
 
-## Modifying Layouts
+## Making Tweaks
 
-All of the layout files used by the package are located in `resources/views/vendor/laracrud/layouts*`. You can make any changes you want in these files.
+The package was designed to be extremely flexible and easily modifyable.
 
-## Extending Controllers
+### Extending Controllers
 
-If you want to modify the default package controllers, simply create your own controllers which extend the package controllers, and then update the `laracrud.php` config file with your new controller paths.
+If you want to modify the default package controllers, simply create your own controllers which extend the package controllers, and then update `config/laracrud.php` with your new controller paths.
+
+### Modifying Layouts
+
+All of the layout files used by the package are located in `resources/views/vendor/laracrud/layouts/*`. You can make any changes you want in these files.
 
 ## User Roles Concept
 
-User roles can be modified in the `laracrud.php` config file. Any time you generated CRUD for a new role you should add said role to the `roles` array.
+Available user roles can be modified in `config/laracrud.php`. Any time you generated CRUD for a new role you should add said role to the `roles` array.
 
 The concept is simple, each role has it's own controllers, views, & routes in order to separate the concerns/permissions of each role.
 
@@ -74,4 +78,10 @@ You can use the CRUD command to create the controller, model, migrations, views,
 
 To generate new resources, run: `php artisan make:crud "Role Name" "Model Name"`
 
-The role name will be used for the controller namespace, view, & route paths. **If it contains multiple words, make sure you use quotation marks and spaces.** Same goes for the model name.
+The role name will be used for the controller namespace, view, & route paths. **If it contains multiple words, make sure you use quotation marks and spaces. Same goes for the model name.**
+
+For example, let's say I want Admin's to have access to a new `Car` resource. I would just run `php artisan make:crud Admin Car`. Now my Admin's have access to this new resource.
+
+The scaffolding only generates with a `name` attribute for the model. You will have to update your controller, model, migrations, views, and routes with any new attributes or functionality your app requires for the generated resource.
+
+Once you're ready, you can run `php artisan migrate` to run the migrations for your new resource at any time.
