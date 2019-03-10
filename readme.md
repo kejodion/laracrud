@@ -1,6 +1,6 @@
 ## Laracrud
 
-A simple CRUD package for Laravel 5.8.
+A simple CRUD backend package for Laravel 5.8.
 
 **Screenshots:** https://imgur.com/a/rAWwEvu
 
@@ -79,13 +79,13 @@ You can also use the `Gate` middleware and blade directives with the role name i
 
 ## CRUD Generator
 
-You can use the CRUD command to create the controller, model, migrations, views, and routes for new resources. This saves a ton of time and hassle.
+You can use the CRUD command to create the controller, model, migrations, navbar link, views, and routes for new resources. This saves a ton of time and hassle.
 
 To generate new resources, run: `php artisan make:crud "Role Name" "Model Name"`
 
 The role name will be used for the controller namespace, view, & route paths. **If it contains multiple words, make sure you use quotation marks and spaces. Same goes for the model name.**
 
-For example, let's say I want Admin's to have access to a new `Car` resource. I would just run `php artisan make:crud Admin Car`. Now my Admin's have access to this new resource.
+For example, let's say I want Admin's to have access to a new `Car` resource. I'd run `php artisan make:crud Admin Car`. Now my Admin's have access to this new resource.
 
 The scaffolding only generates with a `name` attribute for the model. You will have to update your controller, model, migrations, views, and routes with any new attributes or functionality your app requires for the generated resource.
 
