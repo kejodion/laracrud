@@ -35,7 +35,7 @@ class {model_class}Controller extends Controller
         return $datatables->toJson();
     }
 
-    public function createForm()
+    public function createModal()
     {
         return view('{role_variable}.{model_variables}.create');
     }
@@ -55,7 +55,7 @@ class {model_class}Controller extends Controller
         ]);
     }
 
-    public function updateForm({model_class} ${model_variable})
+    public function updateModal({model_class} ${model_variable})
     {
         return view('{role_variable}.{model_variables}.update', compact('{model_variable}'));
     }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
+use Kjjdion\Laracrud\Console\Commands\Crud;
 
 class LaracrudServiceProvider extends ServiceProvider
 {
@@ -41,6 +42,11 @@ class LaracrudServiceProvider extends ServiceProvider
 
         // load routes
         $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
+
+        // crud command
+        if ($this->app->runningInConsole()) {
+            $this->commands([Crud::class]);
+        }
 
         // gate permissions
         $this->gatePolicies();

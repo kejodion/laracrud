@@ -6,20 +6,15 @@ $.extend(true, $.fn.dataTable.defaults, {
     responsive: true,
     stateDuration: 0,
     stateSave: true,
+    stateSaveParams: function (settings, data) {
+        data.search.search = '';
+        data.start = 0;
+    },
     stateLoadCallback: function (settings, callback) {
         return JSON.parse(localStorage.getItem($(this).attr('id')));
     },
     stateSaveCallback: function (settings, data) {
         localStorage.setItem($(this).attr('id'), JSON.stringify(data));
-    },
-    drawCallback: function (settings) {
-        let api = this.api();
-
-        // fix pagination if saved page is empty
-        if (api.page() > 0 && api.rows({page: 'current'}).count() === 0) {
-            api.page('previous').state.save();
-            location.reload();
-        }
     }
 });
 
@@ -151,7 +146,7 @@ function flash(alert_class, alert_message) {
     let html = '<div class="alert-flash text-center w-100"><div class="alert bg-' + alert_class + ' text-light d-inline-block">' + alert_message + '</div></div>';
 
     $(html).hide().appendTo('body').fadeIn('fast', function () {
-        $(this).delay(3000).fadeOut('fast', function () {
+        $(this).delay(2000).fadeOut('fast', function () {
             $(this).remove();
         });
     });
