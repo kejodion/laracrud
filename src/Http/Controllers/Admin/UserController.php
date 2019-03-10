@@ -5,7 +5,6 @@ namespace Kjjdion\Laracrud\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -98,7 +97,7 @@ class UserController extends Controller
         $user->update(['password' => Hash::make(request()->input('new_password'))]);
 
         return response()->json([
-            'flash_now' => ['success', 'Password updated!'],
+            'flash_now' => ['success', 'User password updated!'],
             'dismiss_modal' => true,
         ]);
     }

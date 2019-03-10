@@ -9,17 +9,17 @@
         <div class="modal-body">
             <div class="form-group">
                 <label for="current_password">Current Password</label>
-                <input type="password" name="current_password" id="current_password" class="form-control" value="{{ old('current_password') }}">
+                <input type="password" name="current_password" id="current_password" class="form-control">
             </div>
 
             <div class="form-group">
                 <label for="new_password">New Password</label>
-                <input type="password" name="new_password" id="new_password" class="form-control" value="{{ old('new_password') }}">
+                <input type="password" name="new_password" id="new_password" class="form-control">
             </div>
 
             <div class="form-group">
                 <label for="new_password_confirmation">Confirm New Password</label>
-                <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="form-control" value="{{ old('new_password_confirmation') }}">
+                <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="form-control">
             </div>
         </div>
 

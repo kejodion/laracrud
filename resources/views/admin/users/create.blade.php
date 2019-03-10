@@ -1,6 +1,6 @@
 @extends('laracrud::layouts.modal')
 
-@section('title', 'Profile')
+@section('title', 'Create User')
 @section('content')
     <form method="POST" action="{{ route('admin.users.create') }}" data-ajax-form>
         @csrf
@@ -18,12 +18,12 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" class="form-control" value="{{ old('password') }}" autocomplete="new-password">
+                <input type="password" name="password" id="password" class="form-control" autocomplete="new-password">
             </div>
 
             <div class="form-group">
                 <label for="password_confirmation">Confirm Password</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}">
+                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
             </div>
 
             <div class="form-group">

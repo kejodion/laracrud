@@ -10,7 +10,7 @@
         </div>
 
         <div class="form-group">
-            <input type="password" name="password" id="password" class="form-control" value="{{ old('password') }}" placeholder="Password">
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
         </div>
 
         <div class="form-group form-check">
