@@ -48,6 +48,13 @@ If you [didn't](https://www.youtube.com/watch?v=WWaLxFIVX1s) use the `--force`, 
 
 Once you are done installation & configuration, run: `php artisan migrate`
 
+### Logging In
+
+Visit your app URL. You should be presented with the login screen. The default admin login is:
+
+- Email: admin@example.com
+- Password: admin123
+
 ## Making Tweaks
 
 The package was designed to be extremely flexible and modifiable.
