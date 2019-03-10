@@ -24,7 +24,7 @@ class Crud extends Command
 
     public function handle()
     {
-        // set class values
+        // set replacement values
         $this->setReplaces();
 
         // generate crud

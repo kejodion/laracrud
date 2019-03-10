@@ -67,6 +67,19 @@ If you want to modify the default package controllers, simply create your own co
 
 All of the layout files used by the package are located in `resources/views/vendor/laracrud/layouts/*`. You can make any changes you want in these files. Note that any time you generate CRUD a new nav link will be inserted in the `nav` layout file automatically.
 
+### Publishing Package Files
+
+All package files can be published for further tweaking. The following tags are available: 
+
+- `config`: publishes the config file
+- `migrations`: publishes the migrations
+- `views`: publishes all views
+- `install`: publishes all necessary installation files
+
+For example, publishing the config file:
+
+    php artisan vendor:publish --provider="Kjjdion\Laracrud\Providers\LaracrudServiceProvider" --tag="config"
+
 ## User Roles Concept
 
 Available user roles can be modified in `config/laracrud.php`. Any time you generate CRUD for a new role you should add said role to the `roles` array.
@@ -97,3 +110,51 @@ For example, let's say I want Admin's to have access to a new `Car` resource. I'
 The scaffolding only generates with a `name` attribute for the model. You will have to update your controller, model, migrations, views, and routes with any new attributes or functionality your app requires for the generated resource.
 
 Once you're ready, you can `php artisan migrate` to run the migrations for your new resource.
+
+## JSON Responses
+
+Since all forms use AJAX, the controllers are expected to return JSON responses with specific key/value pairs e.g.:
+
+    return response()->json([
+        'flash_now' => ['success', 'User created!'],
+        'dismiss_modal' => true,
+        'reload_datatables' => true,
+    ]);
+
+The following key/value pairs are available.
+
+    'dismiss_modal' => true,
+
+Dismisses the currently open Bootstrap modal.
+
+    'flash_now' => ['success', 'User created!'],
+    
+Flashes an alert immediately. The first array element is the bootstrap class name, and the second is the message.
+
+    'flash_after' => ['success', 'User created!'],
+    
+Flashes an alert on the next request. Useful for showing alerts after a redirect/page reload.
+
+    `redirect` => route('login'),
+    
+Redirects the user to the specified URL.
+
+    `reload_datatables` => true,
+    
+Reloads the datatables on the page with updated data.
+
+    `reload_page` => true,
+    
+Reloads the current page the user is on.
+
+### Custom Responses
+
+If you wish to add your own JSON response handlers, you can do so in your `public/js/app.js` file by leveraging the `ajaxComplete` method:
+
+    $(document).ajaxComplete(function (event, xhr, settings) {
+        if (xhr.hasOwnProperty('responseJSON') && xhr.responseJSON.hasOwnProperty('do_my_function')) {
+            console.log(xhr.responseJSON.do_my_function);
+        }
+    });
+    
+In the above example, the key for your JSON response would be `do_my_function`.
