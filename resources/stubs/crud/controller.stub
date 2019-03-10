@@ -1,0 +1,87 @@
+<?php
+
+namespace App\Http\Controllers\{role_class};
+
+use App\Http\Controllers\Controller;
+use App\{model_class};
+
+class {model_class}Controller extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware(['auth', 'can:{role_string}']);
+    }
+
+    public function index()
+    {
+        $html = app('datatables.html')->columns([
+            ['title' => 'Name', 'data' => 'name'],
+            ['title' => '', 'data' => 'actions', 'searchable' => false, 'orderable' => false],
+        ]);
+        $html->ajax(route('{role_variable}.{model_variables}.datatables'));
+        $html->setTableAttribute('id', '{model_variables}_datatables');
+
+        return view('{role_variable}.{model_variables}.index', compact('html'));
+    }
+
+    public function datatables()
+    {
+        $datatables = datatables({model_class}::query())
+            ->editColumn('actions', function (${model_variable}) {
+                return view('{role_variable}.{model_variables}.datatables.actions', compact('{model_variable}'));
+            })
+            ->rawColumns(['actions']);
+
+        return $datatables->toJson();
+    }
+
+    public function createForm()
+    {
+        return view('{role_variable}.{model_variables}.create');
+    }
+
+    public function create()
+    {
+        request()->validate([
+            'name' => 'required|unique:{model_variables}',
+        ]);
+
+        ${model_variable} = {model_class}::create(request()->all());
+
+        return response()->json([
+            'flash_now' => ['success', '{model_string} created!'],
+            'dismiss_modal' => true,
+            'reload_datatables' => true,
+        ]);
+    }
+
+    public function updateForm({model_class} ${model_variable})
+    {
+        return view('{role_variable}.{model_variables}.update', compact('{model_variable}'));
+    }
+
+    public function update({model_class} ${model_variable})
+    {
+        request()->validate([
+            'name' => 'required|unique:{model_variables},name,' . ${model_variable}->id,
+        ]);
+
+        ${model_variable}->update(request()->all());
+
+        return response()->json([
+            'flash_now' => ['success', '{model_string} updated!'],
+            'dismiss_modal' => true,
+            'reload_datatables' => true,
+        ]);
+    }
+
+    public function delete({model_class} ${model_variable})
+    {
+        ${model_variable}->delete();
+
+        return response()->json([
+            'flash_now' => ['success', '{model_string} deleted!'],
+            'reload_datatables' => true,
+        ]);
+    }
+}

@@ -1,0 +1,8 @@
+// admin {model_variables}
+Route::get('{role_variable}/{model_variables}', '{role_class}\{model_class}Controller@index')->name('{role_variable}.{model_variables}');
+Route::get('{role_variable}/{model_variables}/datatables', '{role_class}\{model_class}Controller@datatables')->name('{role_variable}.{model_variables}.datatables');
+Route::get('{role_variable}/{model_variables}/create', '{role_class}\{model_class}Controller@createModal')->name('{role_variable}.{model_variables}.create');
+Route::post('{role_variable}/{model_variables}/create', '{role_class}\{model_class}Controller@create');
+Route::get('{role_variable}/{model_variables}/update/{{model_variable}}', '{role_class}\{model_class}Controller@updateModal')->name('{role_variable}.{model_variables}.update');
+Route::patch('{role_variable}/{model_variables}/update/{{model_variable}}', '{role_class}\{model_class}Controller@update');
+Route::delete('{role_variable}/{model_variables}/delete/{{model_variable}}', '{role_class}\{model_class}Controller@delete')->name('{role_variable}.{model_variables}.delete');

@@ -1,0 +1,3 @@
+<li class="nav-item{!! request()->is('{role_variable}/{model_variables}') ? ' class="active"' : '' !!}">
+    <a href="{{ route('{role_variable}.{model_variables}') }}" class="nav-link">{model_strings}</a>
+</li>
