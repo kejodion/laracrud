@@ -50,7 +50,7 @@ Once you are done installation & configuration, run: `php artisan migrate`
 
 ## Making Tweaks
 
-The package was designed to be extremely flexible and easily modifyable.
+The package was designed to be extremely flexible and modifiable.
 
 ### Extending Controllers
 
@@ -70,7 +70,12 @@ All role resource namespaces/paths are prepended with the name of said role, for
 
 - `App\Http\Controllers\Admin`
 - `resources/views/admin`
-- `route('admin.model.*')`
+- `route('admin.models.*')`
+
+You can also use the `Gate` middleware and blade directives with the role name in order ensure a user has said role e.g.:
+
+- `@can('Admin')`
+- `$this->middleware(['auth', 'can:Admin']);`
 
 ## CRUD Generator
 
@@ -84,4 +89,4 @@ For example, let's say I want Admin's to have access to a new `Car` resource. I 
 
 The scaffolding only generates with a `name` attribute for the model. You will have to update your controller, model, migrations, views, and routes with any new attributes or functionality your app requires for the generated resource.
 
-Once you're ready, you can run `php artisan migrate` to run the migrations for your new resource at any time.
+Once you're ready, you can `php artisan migrate` to run the migrations for your new resource.
