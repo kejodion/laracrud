@@ -3,7 +3,7 @@
 Route::group(['middleware' => 'web'], function () {
 
     // auth
-    Route::get('login', config('laracrud.controllers.auth.login') . '@loginForm')->name('login');
+    Route::get('login', config('laracrud.controllers.auth.login') . '@loginPage')->name('login');
     Route::post('login', config('laracrud.controllers.auth.login') . '@login');
     Route::post('logout', config('laracrud.controllers.auth.login') . '@logout')->name('logout');
     Route::get('profile', config('laracrud.controllers.auth.profile') . '@profileModal')->name('profile');

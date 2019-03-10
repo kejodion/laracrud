@@ -1,0 +1,35 @@
+/* use google font */
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+/* round buttons */
+.btn-round.btn-sm {
+    border-radius: 1rem;
+    padding: .25rem .75rem;
+}
+.btn-round {
+    border-radius: 1.25rem;
+    padding: .375rem 1rem;
+}
+.btn-round.btn-lg {
+    border-radius: 1.5rem;
+    padding: .5rem 1.25rem;
+}
+
+/* icon buttons */
+.btn-icon.btn-sm {
+    padding: .25rem .35rem;
+}
+.btn-icon {
+    padding: .375rem .5rem;
+}
+.btn-icon.btn-lg {
+    padding: .5rem .65rem;
+}
+
+/* ajax alerts */
+.alert-flash {
+    position: absolute;
+    top: 1rem;
+}

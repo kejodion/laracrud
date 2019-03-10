@@ -2,6 +2,9 @@
 
 return [
 
+    // logo icon
+    'icon' => 'fa-cog',
+
     // available user roles
     'roles' => ['Admin'],
 
