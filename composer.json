@@ -1,6 +1,6 @@
 {
   "name": "kjjdion/laracrud",
-  "description": "A simple Laravel admin CRUD package.",
+  "description": "A simple CRUD backend package for Laravel 5.8.",
   "homepage": "https://github.com/kjjdion/laracrud",
   "license": "MIT",
   "authors": [
