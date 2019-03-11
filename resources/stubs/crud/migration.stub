@@ -11,7 +11,7 @@ class Create{model_classes}Table extends Migration
         // create table
         Schema::create('{model_variables}', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }
