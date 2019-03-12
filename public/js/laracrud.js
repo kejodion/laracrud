@@ -121,7 +121,7 @@ $(document).ready(function () {
     });
 
     // execute scripts in ajax modals
-    $(document).on('shown.bs.modal', '.modal-ajax', function () {
+    $(document).on('shown.bs.modal', '[data-ajax-modal]', function () {
         $(this).find('script').each(function(){
             eval($(this).text());
         });
