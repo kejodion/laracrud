@@ -1,3 +1,9 @@
+**Package no longer maintained**
+
+Please consider Laravel AJAX CRUD instead: https://github.com/kdion4891/laravel-ajax-crud
+
+---
+
 ## Laracrud
 
 A simple CRUD backend package for Laravel 5.8.
